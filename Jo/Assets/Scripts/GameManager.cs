@@ -21,9 +21,21 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameLoop()
     {
+        //Ci si "paracaduta" nell'arena
+        while (true)
+        {
+            if (true)
+                break;
+        }
         //15s per decidere la mossa, nel caso non si metta nulla si resta fermi
 
         //Tutti fanno la mossa contemporaneamente
+
+        //Si muove l'ambiente
+
+        //Se sono passati X turni si restringe l'area
+
+        //Si riparte e si continua finché non ne rimane 1
         yield return null;
     }
 

@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -126,6 +127,44 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6134204655259739013}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &11263948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11263949}
+  m_Layer: 0
+  m_Name: PlayerCameras
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &11263949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11263948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1734988299}
+  - {fileID: 1495054112}
+  - {fileID: 1523459768}
+  - {fileID: 1514042824}
+  - {fileID: 302695478}
+  - {fileID: 1780574088}
+  - {fileID: 237973203}
+  - {fileID: 906464951}
+  m_Father: {fileID: 381100110}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &69226851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,11 +172,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (36)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -202,6 +236,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (36)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -330,11 +369,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (49)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -399,6 +433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (49)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -494,12 +533,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -540,7 +579,7 @@ RectTransform:
   - {fileID: 901387425}
   - {fileID: 1283966327}
   - {fileID: 83456593}
-  - {fileID: 1024331546}
+  - {fileID: 473216594}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -562,11 +601,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -632,6 +666,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (4)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &195844935 stripped
@@ -647,11 +686,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (21)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -717,6 +751,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (21)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &196840373 stripped
@@ -732,11 +771,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (34)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -802,6 +836,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (34)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &235954847
@@ -811,11 +850,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (65)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -881,8 +915,87 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (65)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
+--- !u!1 &237973202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237973203}
+  - component: {fileID: 237973205}
+  m_Layer: 0
+  m_Name: Camera7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &237973203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237973202}
+  m_LocalRotation: {x: 0.14454393, y: -0.8516508, z: 0.30997548, w: 0.39713123}
+  m_LocalPosition: {x: 7, y: 10, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 40, y: -130, z: 0}
+--- !u!20 &237973205
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237973202}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0.5
+    y: 0
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &246089858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -890,11 +1003,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (62)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -960,6 +1068,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (62)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &253273077
@@ -969,11 +1082,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (33)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1039,6 +1147,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (33)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &258165897
@@ -1048,11 +1161,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (20)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1118,6 +1226,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (20)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &258165898 stripped
@@ -1133,11 +1246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (61)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1203,8 +1311,87 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (61)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
+--- !u!1 &302695477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 302695478}
+  - component: {fileID: 302695480}
+  m_Layer: 0
+  m_Name: Camera5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &302695478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302695477}
+  m_LocalRotation: {x: 0.40957606, y: -0.49673173, z: 0.2867882, w: 0.70940655}
+  m_LocalPosition: {x: 7, y: 10, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 60, y: -70, z: 0}
+--- !u!20 &302695480
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302695477}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!4 &303152703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
@@ -1218,11 +1405,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (76)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1287,6 +1469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (76)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -1389,11 +1576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (29)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1459,6 +1641,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (29)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &333084842 stripped
@@ -1480,11 +1667,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (75)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1550,6 +1732,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (75)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &369179614
@@ -1559,11 +1746,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (66)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1628,6 +1810,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (66)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -1771,6 +1958,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380410439}
   m_CullTransparentMesh: 0
+--- !u!1 &381100109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381100110}
+  m_Layer: 0
+  m_Name: Cameras
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381100110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381100109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 963194228}
+  - {fileID: 1104424772}
+  - {fileID: 11263949}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &394386933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
@@ -1861,11 +2081,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (13)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1931,6 +2146,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (13)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &411523131 stripped
@@ -1951,6 +2171,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 978294326}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &473216593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473216594}
+  - component: {fileID: 473216596}
+  - component: {fileID: 473216595}
+  m_Layer: 5
+  m_Name: MiniMapBorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &473216594
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473216593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 600400751}
+  m_Father: {fileID: 168674559}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -135, y: 135}
+  m_SizeDelta: {x: 270, y: 270}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &473216595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473216593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &473216596
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473216593}
+  m_CullTransparentMesh: 0
 --- !u!1001 &486340507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1958,11 +2252,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2028,6 +2317,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &486340508 stripped
@@ -2067,11 +2361,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (16)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2136,6 +2425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (16)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -2251,6 +2545,94 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &600400750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600400751}
+  - component: {fileID: 600400754}
+  - component: {fileID: 600400753}
+  - component: {fileID: 600400752}
+  m_Layer: 5
+  m_Name: Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &600400751
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600400750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1024331546}
+  m_Father: {fileID: 473216594}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 265, y: 265}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &600400752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600400750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &600400753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600400750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &600400754
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600400750}
+  m_CullTransparentMesh: 0
 --- !u!1001 &621630046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2258,11 +2640,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (17)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2328,6 +2705,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (17)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &621630047 stripped
@@ -2349,11 +2731,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (42)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2419,6 +2796,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (42)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &662853901 stripped
@@ -2452,8 +2834,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -2525,11 +2908,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2595,6 +2973,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (12)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &749417467 stripped
@@ -2616,11 +2999,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (19)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2685,6 +3063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (19)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -2778,11 +3161,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (22)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2848,6 +3226,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (22)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &794542547 stripped
@@ -2863,11 +3246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2933,6 +3311,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &815178965 stripped
@@ -2948,11 +3331,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (23)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3018,6 +3396,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (23)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &832763021 stripped
@@ -3045,11 +3428,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (46)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3115,6 +3493,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (46)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &877688868
@@ -3124,11 +3507,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (37)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3194,6 +3572,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (37)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &880604035
@@ -3203,11 +3586,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3273,6 +3651,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (7)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &880604036 stripped
@@ -3288,11 +3671,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (63)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3358,6 +3736,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (63)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &891873253
@@ -3367,11 +3750,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (44)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3436,6 +3814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (44)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -3557,6 +3940,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901387424}
   m_CullTransparentMesh: 0
+--- !u!1 &906464950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 906464951}
+  - component: {fileID: 906464953}
+  m_Layer: 0
+  m_Name: Camera8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &906464951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906464950}
+  m_LocalRotation: {x: 0.17485563, y: -0.7121553, z: 0.19082147, w: 0.65257}
+  m_LocalPosition: {x: 9, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 30, y: -95, z: 0}
+--- !u!20 &906464953
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906464950}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0.75
+    y: 0
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &949911398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3564,11 +4021,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (52)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3634,6 +4086,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (52)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &958224237
@@ -3643,11 +4100,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (41)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3712,6 +4164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (41)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -3792,12 +4249,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalRotation: {x: 0.5735764, y: -0, z: -0, w: 0.8191521}
   m_LocalPosition: {x: 3, y: 20, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 381100110}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -3811,9 +4268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb98732bb6878214b9cfa49aa2958057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 10
   pixelLimit: 30
   zoomSensivity: 0.75
+  miniMapCam: {fileID: 1104424771}
 --- !u!4 &964758748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
@@ -3827,11 +4285,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (77)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3897,6 +4350,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (77)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &997226771
@@ -3906,11 +4364,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (67)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3976,6 +4429,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (67)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1 &1024331545
@@ -4003,17 +4461,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024331545}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 168674559}
-  m_RootOrder: 4
+  m_Father: {fileID: 600400751}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 150}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 480, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024331547
 MonoBehaviour:
@@ -4024,7 +4482,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024331545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -4033,16 +4491,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Texture: {fileID: 8400000, guid: 0cdcb766642ceff4a9497245058331ee, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!222 &1024331548
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4058,11 +4513,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4128,6 +4578,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (8)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1046673583 stripped
@@ -4143,11 +4598,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (74)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4213,6 +4663,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (74)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1054738300
@@ -4222,11 +4677,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (73)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4292,6 +4742,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (73)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1 &1060136857 stripped
@@ -4307,11 +4762,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4377,6 +4827,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1074731195 stripped
@@ -4392,11 +4847,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4462,6 +4912,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (10)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1093948994 stripped
@@ -4470,6 +4925,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1093948993}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1104424769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1104424772}
+  - component: {fileID: 1104424771}
+  m_Layer: 0
+  m_Name: MinimapCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &1104424771
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104424769}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 30
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: 0cdcb766642ceff4a9497245058331ee, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1104424772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104424769}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 15, y: 40, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 381100110}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1105950124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4477,11 +5006,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (51)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4547,6 +5071,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (51)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1137499390 stripped
@@ -4562,11 +5091,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (31)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4632,6 +5156,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (31)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1152741444 stripped
@@ -4647,11 +5176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (68)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4717,6 +5241,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (68)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1153552313
@@ -4726,11 +5255,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (72)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4796,6 +5320,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (72)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1163186138
@@ -4805,11 +5334,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4875,6 +5399,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (9)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1163186139 stripped
@@ -4890,11 +5419,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (43)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4960,6 +5484,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (43)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1205330176
@@ -4969,11 +5498,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (38)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5039,6 +5563,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (38)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1234890864 stripped
@@ -5054,11 +5583,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (47)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5123,6 +5647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (47)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -5251,11 +5780,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (59)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5321,6 +5845,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (59)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1311240630 stripped
@@ -5336,11 +5865,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (35)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5406,6 +5930,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (35)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1348627820 stripped
@@ -5427,11 +5956,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (60)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5497,6 +6021,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (60)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1 &1373760403
@@ -5552,11 +6081,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (70)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5622,6 +6146,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (70)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1406379041
@@ -5631,11 +6160,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5701,6 +6225,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (5)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1406379042 stripped
@@ -5722,11 +6251,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (55)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5792,6 +6316,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (55)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1418959447 stripped
@@ -5807,11 +6336,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (15)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5877,6 +6401,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (15)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1421166948 stripped
@@ -5898,11 +6427,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (58)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5968,6 +6492,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (58)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1450034185
@@ -5977,11 +6506,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (14)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6046,6 +6570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -6217,11 +6746,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6287,6 +6811,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (11)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1473189020 stripped
@@ -6295,6 +6824,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1473189019}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1495054111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1495054112}
+  - component: {fileID: 1495054114}
+  m_Layer: 0
+  m_Name: Camera2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1495054112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495054111}
+  m_LocalRotation: {x: 0.38268277, y: -0, z: -0, w: 0.92387986}
+  m_LocalPosition: {x: 1.41, y: 5, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 45.000004, y: 0, z: 0}
+--- !u!20 &1495054114
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495054111}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0.25
+    y: 0.5
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &1504976904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6302,11 +6905,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (26)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6372,6 +6970,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (26)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1504976905 stripped
@@ -6380,6 +6983,154 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1504976904}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1514042823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1514042824}
+  - component: {fileID: 1514042826}
+  m_Layer: 0
+  m_Name: Camera4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1514042824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514042823}
+  m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
+  m_LocalPosition: {x: 1.41, y: 9, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
+--- !u!20 &1514042826
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514042823}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0.75
+    y: 0.5
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!1 &1523459767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1523459768}
+  - component: {fileID: 1523459770}
+  m_Layer: 0
+  m_Name: Camera3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1523459768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523459767}
+  m_LocalRotation: {x: -0, y: -0.2588186, z: -0, w: 0.965926}
+  m_LocalPosition: {x: 4, y: 2.32, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -30.000002, z: 0}
+--- !u!20 &1523459770
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523459767}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0.5
+    y: 0.5
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &1524909618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6387,11 +7138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (28)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6457,6 +7203,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (28)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1524909619 stripped
@@ -6478,11 +7229,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (25)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6548,6 +7294,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (25)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1612288131 stripped
@@ -6575,11 +7326,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (53)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6645,6 +7391,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (53)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1697769491
@@ -6654,11 +7405,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (40)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6724,6 +7470,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (40)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1715831911
@@ -6733,11 +7484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (32)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6803,6 +7549,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (32)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1715853668 stripped
@@ -6811,6 +7562,154 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1266289098}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1734988298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1734988299}
+  - component: {fileID: 1734988301}
+  m_Layer: 0
+  m_Name: Camera1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1734988299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734988298}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.41, y: 2.32, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1734988301
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734988298}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0.5
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!1 &1780574087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780574088}
+  - component: {fileID: 1780574090}
+  m_Layer: 0
+  m_Name: Camera6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780574088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780574087}
+  m_LocalRotation: {x: 0.059391193, y: 0.92541665, z: -0.33682406, w: 0.16317599}
+  m_LocalPosition: {x: 0, y: 2.5, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11263949}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 40, y: 160, z: 0}
+--- !u!20 &1780574090
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780574087}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0.25
+    y: 0
+    width: 0.25
+    height: 0.5
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!4 &1870046287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
@@ -6830,11 +7729,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (24)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6900,6 +7794,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (24)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1889149412 stripped
@@ -6921,11 +7820,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (48)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6991,6 +7885,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (48)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &1925387838
@@ -7000,11 +7899,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (30)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7070,6 +7964,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (30)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &1925387839 stripped
@@ -7103,11 +8002,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (27)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7172,6 +8066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (27)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -7271,11 +8170,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7341,6 +8235,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (6)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!4 &2034838673 stripped
@@ -7356,11 +8255,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (71)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7426,6 +8320,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (71)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
 --- !u!1001 &2096309571
@@ -7435,11 +8334,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile (18)
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7504,6 +8398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (18)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
@@ -7611,11 +8510,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562344332}
     m_Modifications:
-    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile
-      objectReference: {fileID: 0}
     - target: {fileID: 6134204655257085528, guid: 20b4d43c160175145b28942c24850ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7680,6 +8574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134204655257085534, guid: 20b4d43c160175145b28942c24850ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b4d43c160175145b28942c24850ee5, type: 3}
