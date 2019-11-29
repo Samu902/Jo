@@ -4,55 +4,58 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int movementRange;
-    private bool movesVisible;
+    [SerializeField]
+    private int movementRange;
+    private bool movesAreVisible;
 
     bool running;
 
     void Start()
     {
-        movesVisible = false;
+        movesAreVisible = false;
         running = true;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            if (movesVisible)
-                HideAvailableMoves();
-            else
-                ShowAvailableMoves();
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //if (movesAreVisible)
+        //    HideAvailableMoves();
+        //else
+        //    ShowAvailableMoves();
 
-            movesVisible = !movesVisible;
-        }
+            //movesAreVisible = !movesAreVisible;
+            //}
     }
 
-    private void ShowAvailableMoves()
+    public void ToggleAvailableMoves()
     {
+        Color c = movesAreVisible ? Color.white : Color.yellow;
+        movesAreVisible = !movesAreVisible;
+
         Collider[] moves = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
         if (moves == null)
             return;
 
         foreach (Collider tile in moves)
-        {
-            tile.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.green;
-        }
-        Debug.Log("Rese visibili mosse");
+            tile.transform.GetChild(0).GetComponent<Renderer>().material.color = c;
+
+        Debug.Log("Toggle mosse");
     }
 
-    private void HideAvailableMoves()
-    {
-        Collider[] moves = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
-        if (moves == null)
-            return;
+    //public void HideAvailableMoves()
+    //{
+    //    Collider[] moves = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
+    //    if (moves == null)
+    //        return;
 
-        foreach (Collider tile in moves)
-        {
-            tile.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.white;
-        }
-        Debug.Log("Rese invisibili mosse");
-    }
+    //    foreach (Collider tile in moves)
+    //    {
+    //        tile.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.white;
+    //    }
+    //    Debug.Log("Rese invisibili mosse");
+    //}
 
     void OnDrawGizmos()
     {
