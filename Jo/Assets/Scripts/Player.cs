@@ -4,37 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject[] avatars;
-    private int current;
+    public string playerName;
+    public int id;
 
-    void Start()
+    [HideInInspector]
+    public PlayerMovement movement;
+    [HideInInspector]
+    public PlayerUI ui;
+
+    private void Awake()
     {
-        current = 0;
+        
     }
 
-    void Update()
+    private void Start()
     {
-        RotateAvatar();
+        movement = GetComponent<PlayerMovement>();
+        ui = GetComponent<PlayerUI>();
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-            current = current == avatars.Length - 1 ? 0 : current + 1;
-
-        if(Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200, 1 << 8))
-        {
-            MoveAvatar(hit.transform.position);
-        }
-    }
-
-    private void MoveAvatar(Vector3 newPos)
-    {
-        avatars[current].transform.position = newPos + Vector3.up * 0.5f;
-    }
-
-    private void RotateAvatar()
-    {
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200, 1 << 8))
-        {
-            avatars[current].transform.LookAt(hit.collider.transform.position);
-        }
+        //Register player in game manager's list
+        GameManager.instance.players.Add(this);
     }
 }

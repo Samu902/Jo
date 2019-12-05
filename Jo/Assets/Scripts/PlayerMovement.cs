@@ -6,64 +6,86 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private int movementRange;
+    private GameObject[] moves;
     private bool movesAreVisible;
 
-    bool running;
+    private Player player;
 
     void Start()
     {
+        player = GetComponent<Player>();
+
         movesAreVisible = false;
-        running = true;
     }
 
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.M))
-        //{
-        //if (movesAreVisible)
-        //    HideAvailableMoves();
-        //else
-        //    ShowAvailableMoves();
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+            SelectMove();
+    }
 
-            //movesAreVisible = !movesAreVisible;
-            //}
+    private void ColorTile(GameObject t, Color c)
+    {
+        t.transform.GetComponentInChildren<Renderer>().material.color = c;
+    }
+
+    #region Move
+    private bool CalculateMoves()
+    {
+        //Gets adiacent tiles using movementRange
+        Collider[] tiles = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
+
+        //Returns false if there aren't any moves
+        if (tiles == null)
+            return false;
+
+        //Fills the array with the data
+        moves = new GameObject[tiles.Length];
+        for (int i = 0; i < moves.Length; i++)
+            moves[i] = tiles[i].gameObject;
+
+        return true;
     }
 
     public void ToggleAvailableMoves()
     {
+        //Toggles the state of the bool var
         Color c = movesAreVisible ? Color.white : Color.yellow;
         movesAreVisible = !movesAreVisible;
 
-        Collider[] moves = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
-        if (moves == null)
+        if (!CalculateMoves())
             return;
 
-        foreach (Collider tile in moves)
-            tile.transform.GetChild(0).GetComponent<Renderer>().material.color = c;
-
-        Debug.Log("Toggle mosse");
+        //Colors tiles
+        for (int i = 0; i < moves.Length; i++)
+            ColorTile(moves[i], c);
     }
 
-    //public void HideAvailableMoves()
-    //{
-    //    Collider[] moves = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
-    //    if (moves == null)
-    //        return;
-
-    //    foreach (Collider tile in moves)
-    //    {
-    //        tile.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.white;
-    //    }
-    //    Debug.Log("Rese invisibili mosse");
-    //}
-
-    void OnDrawGizmos()
+    private void SelectMove()
     {
-        Gizmos.color = Color.red;
-        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
-        
-        if(running)
-            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-            Gizmos.DrawWireCube(transform.position, 2 * 2 * movementRange * Vector3.one/* * 1.1f*/);
+        if (!movesAreVisible)
+            return;
+
+        //Resets all tiles' (moves) color to yellow 
+        for (int i = 0; i < moves.Length; i++)
+            ColorTile(moves[i], Color.yellow);
+
+        //If it hits something and that is one of the available moves, it colors it
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+        {
+            for (int i = 0; i < moves.Length; i++)
+            {
+                if (moves[i] == hit.collider.gameObject)
+                {
+                    ColorTile(hit.collider.gameObject, Color.green);
+                    break;
+                }
+            }
+        }
     }
+    #endregion
+
+    #region Shoot
+
+    #endregion
 }

@@ -4,43 +4,35 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    [Header("Camera control region")]
     public float speed;
     public float pixelLimit;
     [Range(0.25f, 4f)]
     public float zoomSensivity;
 
-    private Transform topView;
-    private Transform perspectiveView;
+    public Camera mainCam;
+    public Camera miniMapCam;
 
-    private Camera mainCam;
-    [SerializeField]
-    private Camera miniMapCam;
+    public Transform playerCamerasParent;
+    //public Camera[] cameras8;
+    //public Camera[] cameras4;
+    //public Camera[] cameras2;
 
-    //Servirà poi
-    private Camera[] playerCameras;
+    [HideInInspector]
+    public Camera[] playerCameras;
 
-    void Start()
+    private void Start()
     {
-        mainCam = GetComponent<Camera>();
+        //cameras8 = playerCamerasParent.GetChild(0).GetComponentsInChildren<Camera>(true);
+        //cameras4 = playerCamerasParent.GetChild(1).GetComponentsInChildren<Camera>(true);
+        //cameras2 = playerCamerasParent.GetChild(2).GetComponentsInChildren<Camera>(true);
+
+        playerCameras = null;
+        playerCamerasParent.gameObject.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        //Depth minore --> renderizzata prima, si vede solo l'ultima a schermo
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            if(miniMapCam.depth < mainCam.depth)
-            {
-                miniMapCam.depth = -1;
-                mainCam.depth = -2;
-            }
-            else
-            {
-                miniMapCam.depth = -2;
-                mainCam.depth = -1;
-            }
-        }
-
         Vector3 dir = Vector3.zero;
         if (Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x > Screen.width - pixelLimit)
         {
@@ -58,7 +50,96 @@ public class CameraManager : MonoBehaviour
         {
             dir += Vector3.back;
         }
-        transform.position += dir.normalized * speed * Time.deltaTime;
-        transform.position += transform.forward * Input.mouseScrollDelta.y * zoomSensivity;
+        mainCam.transform.position += dir.normalized * speed * Time.deltaTime;
+
+        mainCam.transform.position += transform.forward * Input.mouseScrollDelta.y * zoomSensivity;
+
+        //DEBUG
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            if (playerCameras.Length == 8)
+                SwitchCameras(4);
+            else if (playerCameras.Length == 4)
+                SwitchCameras(2);
+            else
+                SwitchCameras(8);
+        }
+    }
+
+    public void SwitchCameras(int n)
+    {
+        if(!(n == 2 || n == 4 || n == 8))
+        {
+            Debug.LogError("Numero per switch camera non valido: " + n);
+            return;
+        }
+
+        if(n == playerCameras.Length)
+        {
+            Debug.LogError("E' già a questo numero");
+            return;
+        }
+
+        //Fills the array, then turns on the right group
+        //playerCameras = new Camera[n];
+        //for (int i = 0; i < playerCameras.Length; i++)
+        //{
+        //    switch (n)
+        //    {
+        //        case 8:
+        //            playerCameras[i] = cameras8[i];
+        //            break;
+        //        case 4:
+        //            playerCameras[i] = cameras4[i];
+        //            break;
+        //        case 2:
+        //            playerCameras[i] = cameras2[i];
+        //            break;
+        //    }
+        //}
+
+        //Fills the array, then turns on the right group
+        playerCameras = new Camera[n];
+        for (int i = 0; i < playerCameras.Length; i++)
+        {
+            switch (n)
+            {
+                case 8:
+                    playerCameras = playerCamerasParent.GetChild(0).GetComponentsInChildren<Camera>();
+                    break;
+                case 4:
+                    playerCameras = playerCamerasParent.GetChild(1).GetComponentsInChildren<Camera>();
+                    break;
+                case 2:
+                    playerCameras = playerCamerasParent.GetChild(0).GetComponentsInChildren<Camera>();
+                    break;
+            }
+        }
+
+        switch (n)
+        {
+            case 8:
+                playerCamerasParent.GetChild(0).gameObject.SetActive(true);
+                playerCamerasParent.GetChild(1).gameObject.SetActive(false);
+                playerCamerasParent.GetChild(2).gameObject.SetActive(false);
+                break;
+            case 4:
+                playerCamerasParent.GetChild(0).gameObject.SetActive(false);
+                playerCamerasParent.GetChild(1).gameObject.SetActive(true);
+                playerCamerasParent.GetChild(2).gameObject.SetActive(false);
+                break;
+            case 2:
+                playerCamerasParent.GetChild(0).gameObject.SetActive(false);
+                playerCamerasParent.GetChild(1).gameObject.SetActive(false);
+                playerCamerasParent.GetChild(2).gameObject.SetActive(true);
+                break;
+        }
+    }
+
+    public void TurnOffCam(int playerIndex)
+    {
+        playerCameras[playerIndex].cullingMask = 0;
+        playerCameras[playerIndex].clearFlags = CameraClearFlags.SolidColor;
+        playerCameras[playerIndex].backgroundColor = Color.black;
     }
 }

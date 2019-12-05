@@ -9,7 +9,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private Button moveButton, shootButton, restButton, confirmButton;
 
-    private PlayerMovement playerMovement;
+    private Player player;
 
     private void OnEnable()
     {
@@ -29,7 +29,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
@@ -49,7 +49,7 @@ public class PlayerUI : MonoBehaviour
 
     public void OnMove()
     {
-        playerMovement.ToggleAvailableMoves();
+        player.movement.ToggleAvailableMoves();
     }
 
     private void OnShoot()

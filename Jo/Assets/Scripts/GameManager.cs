@@ -17,105 +17,44 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int turnsToRestrict;
 
-    private GameObject[] initialPlayers;
-    private List<GameObject> players;
+    //private Player[] initialPlayers;
+    public List<Player> players;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
 
+        players = new List<Player>();
+
+        //SIMULAZIONE DEBUG
+        for (int i = 0; i <= 6; i++)
+        {
+            players.Add(new Player() { id = i });
+        }
+    }
+
+    private void Start()
+    {
         remainingTime = cronoTime;
 
-        initialPlayers = new GameObject[8];
-        players = new List<GameObject>(initialPlayers);
+        //initialPlayers = new Player[8];
+        //players = new List<Player>(initialPlayers);
 
         StartCoroutine(GameLoop());
     }
 
     private void Update()
     {
-        //UpdateTime();
+        
     }
+
+    //public void RegisterPlayer(Player p)
+    //{
+    //    players.Add(p);
+    //}
 
     private IEnumerator GameLoop()
     {
-        ////Ci si "paracaduta" nell'arena
-
-        //while (players.Count > 1)
-        //{
-        //    while (turns % turnsToRestrict != 0 || turns == 0)
-        //    {
-        //        turns++;
-
-        //        //15s per decidere la mossa, nel caso non si metta nulla si resta fermi
-        //        remainingTime = cronoTime;
-        //        while (remainingTime > 0)
-        //        {
-        //            yield return new WaitForEndOfFrame();
-        //        }
-        //        Debug.Log("Tutti hanno segnato la mossa/è finito il tempo");
-
-        //        //Tutti fanno la mossa contemporaneamente
-        //        Debug.Log("Tutti hanno fatto la loro mossa");
-        //        if (Random.value >= 0.75f)
-        //        {
-        //            int r = Random.Range(0, players.Count - 1);
-        //            players.RemoveAt(r);
-        //            Debug.Log("Giocatore " + (r + 1) + " eliminato");
-        //        }
-
-        //        //Si muove l'ambiente    
-        //        Debug.Log("Abbiamo visto cosa è successo all'ambiente");
-        //    }
-        //    //Se sono passati X turni si restringe l'area
-        //    Debug.LogFormat("[Turno {0}] Si è ristretta l'area!", turns);
-        //}
-        ////Si riparte e si continua finché non ne rimane 1
-
-        ////Roba vittoria
-
-
-        ////Ci si "paracaduta" nell'arena
-        //do
-        //{
-        //    do
-        //    {
-        //        turns++;
-
-        //        //15s per decidere la mossa, nel caso non si metta nulla si resta fermi
-        //        remainingTime = cronoTime;
-        //        while (remainingTime > 0)
-        //        {
-        //            yield return new WaitForEndOfFrame();
-        //        }
-        //        Debug.Log("Tutti hanno segnato la mossa/è finito il tempo");
-
-        //        //Tutti fanno la mossa contemporaneamente
-        //        Debug.Log("Tutti hanno fatto la loro mossa");
-        //        if (Random.value >= 0.75f)
-        //        {
-        //            int r = Random.Range(0, players.Count - 1);
-        //            players.RemoveAt(r);
-        //            Debug.Log("Giocatore " + (r + 1) + " eliminato");
-
-        //            if (players.Count <= 1)
-        //                Debug.Log("E' rimasto solo 1 giocatore");
-        //        }
-
-        //        //Si muove l'ambiente    
-        //        Debug.Log("Abbiamo visto cosa è successo all'ambiente");
-        //    }
-        //    while (turns % turnsToRestrict != 0);
-
-        //    //Quando sono passati X turni si restringe l'area
-        //    Debug.LogFormat("[Turno {0}] Si è ristretta l'area!", turns);
-        //}
-        //while (players.Count > 1);
-        //Si riparte e si continua finché non ne rimane 1
-
-        //Roba vittoria
-
-
         //Ci si "paracaduta" nell'arena
         do
         {
@@ -127,7 +66,8 @@ public class GameManager : MonoBehaviour
             while (remainingTime > 0)
             {
                 remainingTime -= Time.deltaTime;
-                crono.text = Mathf.Round(remainingTime) < 10 ? "0: 0" + Mathf.Round(remainingTime) : "0: " + Mathf.Round(remainingTime);
+                int s = Mathf.RoundToInt(remainingTime);
+                crono.text = s < 10 ? "0: 0" + s : "0: " + s;
                 yield return new WaitForEndOfFrame();
             }
             Debug.Log("Tutti hanno segnato la mossa/è finito il tempo");
@@ -135,12 +75,18 @@ public class GameManager : MonoBehaviour
             //Tutti fanno la mossa contemporaneamente
             yield return new WaitForSeconds(0.2f);
             Debug.Log("Tutti hanno fatto la loro mossa");
+            yield return StartCoroutine(ShowPlayerCameras());
+
+            //Simulazione morte--Prova
             if (Random.value <= 0.75f)
             {
                 int r = Random.Range(0, players.Count - 1);
+                //DA RIGUARDARE E SCRIVERE MEGLIO
+                FindObjectOfType<CameraManager>().TurnOffCam(players[r].id);
+                Debug.Log("Giocatore " + (players[r].id + 1) + " eliminato");
                 players.RemoveAt(r);
-                Debug.Log("Giocatore " + (r + 1) + " eliminato");
 
+                //Da lasciare
                 if (players.Count <= 1)
                 {
                     yield return new WaitForSeconds(0.2f);
@@ -168,13 +114,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Hai vinto!!!");
     }
 
-    private void UpdateTime()
+    private IEnumerator ShowPlayerCameras()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            remainingTime = cronoTime;
-        }
-        remainingTime -= Time.deltaTime;
-        crono.text = Mathf.Round(remainingTime) < 10 ? "0: 0" + Mathf.Round(remainingTime) : "0: " + Mathf.Round(remainingTime);
+        CameraManager c = FindObjectOfType<CameraManager>();
+        c.playerCamerasParent.gameObject.SetActive(true);
+        c.SwitchCameras(players.Count);
+
+        yield return new WaitForSeconds(2f);
+
+        c.playerCamerasParent.gameObject.SetActive(false);
     }
 }
