@@ -14,19 +14,11 @@ public class CameraManager : MonoBehaviour
     public Camera miniMapCam;
 
     public Transform playerCamerasParent;
-    //public Camera[] cameras8;
-    //public Camera[] cameras4;
-    //public Camera[] cameras2;
-
     [HideInInspector]
     public Camera[] playerCameras;
 
     private void Start()
     {
-        //cameras8 = playerCamerasParent.GetChild(0).GetComponentsInChildren<Camera>(true);
-        //cameras4 = playerCamerasParent.GetChild(1).GetComponentsInChildren<Camera>(true);
-        //cameras2 = playerCamerasParent.GetChild(2).GetComponentsInChildren<Camera>(true);
-
         playerCameras = null;
         playerCamerasParent.gameObject.SetActive(false);
     }
@@ -79,24 +71,6 @@ public class CameraManager : MonoBehaviour
             Debug.LogError("E' già a questo numero");
             return;
         }
-
-        //Fills the array, then turns on the right group
-        //playerCameras = new Camera[n];
-        //for (int i = 0; i < playerCameras.Length; i++)
-        //{
-        //    switch (n)
-        //    {
-        //        case 8:
-        //            playerCameras[i] = cameras8[i];
-        //            break;
-        //        case 4:
-        //            playerCameras[i] = cameras4[i];
-        //            break;
-        //        case 2:
-        //            playerCameras[i] = cameras2[i];
-        //            break;
-        //    }
-        //}
 
         //Fills the array, then turns on the right group
         playerCameras = new Camera[n];

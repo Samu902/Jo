@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int turnsToRestrict;
 
-    //private Player[] initialPlayers;
     public List<Player> players;
 
     private void Awake()
@@ -37,9 +36,6 @@ public class GameManager : MonoBehaviour
     {
         remainingTime = cronoTime;
 
-        //initialPlayers = new Player[8];
-        //players = new List<Player>(initialPlayers);
-
         StartCoroutine(GameLoop());
     }
 
@@ -47,11 +43,6 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
-    //public void RegisterPlayer(Player p)
-    //{
-    //    players.Add(p);
-    //}
 
     private IEnumerator GameLoop()
     {

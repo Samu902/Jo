@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -11,12 +12,15 @@ public class Launcher : MonoBehaviourPunCallbacks
     public GameObject createPanel;
 
     private TMP_InputField roomField;
+    private TMP_InputField nickField;
 
     private void Start()
     {
         mainPanel.SetActive(true);
         joinPanel.SetActive(false);
         createPanel.SetActive(false);
+
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -25,7 +29,8 @@ public class Launcher : MonoBehaviourPunCallbacks
         mainPanel.SetActive(false);
         joinPanel.SetActive(true);
         createPanel.SetActive(false);
-        roomField = joinPanel.GetComponentInChildren<TMP_InputField>();
+        nickField = joinPanel.transform.GetChild(0).GetComponent<TMP_InputField>();
+        roomField = joinPanel.transform.GetChild(1).GetComponent<TMP_InputField>();
     }
 
     public void OnCreateClick()
@@ -33,7 +38,13 @@ public class Launcher : MonoBehaviourPunCallbacks
         mainPanel.SetActive(false);
         joinPanel.SetActive(false);
         createPanel.SetActive(true);
-        roomField = createPanel.GetComponentInChildren<TMP_InputField>();
+        nickField = createPanel.transform.GetChild(0).GetComponent<TMP_InputField>();
+        roomField = createPanel.transform.GetChild(1).GetComponent<TMP_InputField>();
+    }
+
+    public void OnNickNameSet(string nick)
+    {
+        PhotonNetwork.LocalPlayer.NickName = nick;
     }
 
     public void OnRoomSelect()
@@ -66,7 +77,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Connesso alla stanza " + PhotonNetwork.CurrentRoom.Name);
-        PhotonNetwork.LoadLevel("Game");
+        //PhotonNetwork.LoadLevel("GameLobby");
+        SceneManager.LoadScene("GameLobby");
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6134204655257085528}
   - component: {fileID: 6134204655257085529}
+  - component: {fileID: 8610458937332705888}
   m_Layer: 8
   m_Name: Tile
   m_TagString: Untagged
@@ -45,6 +46,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.5, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8610458937332705888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134204655257085534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f9b27155cadd246bcf1588c58268c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 0}
+  oldColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &6134204654876553679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,16 +67,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6134204655257085528}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: cfbbf1934e20cf4419c098cee1774bf6,
-        type: 3}
-      propertyPath: m_Name
-      value: quad
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: cfbbf1934e20cf4419c098cee1774bf6,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cfbbf1934e20cf4419c098cee1774bf6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -126,6 +131,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: cfbbf1934e20cf4419c098cee1774bf6,
+        type: 3}
+      propertyPath: m_Name
+      value: quad
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: cfbbf1934e20cf4419c098cee1774bf6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: cfbbf1934e20cf4419c098cee1774bf6,
         type: 3}
