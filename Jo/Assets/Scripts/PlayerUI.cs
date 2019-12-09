@@ -65,5 +65,9 @@ public class PlayerUI : MonoBehaviour
     private void OnConfirm()
     {
         Debug.Log("Hai appena confermato");
+
+        //Ricordarsi che quando si clicca qui non si vede più la tile selezionata, diventa null subito dopo
+        //Fare in modo di far quanto meno continuare a vederla
+        Debug.Log(player.movement.selectedTile);
     }
 }

@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour
     {
         remainingTime = cronoTime;
 
-        StartCoroutine(GameLoop());
+        //DEBUG
+        //StartCoroutine(GameLoop());
     }
 
     private void Update()

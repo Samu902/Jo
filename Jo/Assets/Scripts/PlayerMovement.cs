@@ -2,12 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MoveType
+{
+    Move, Shoot, Rest
+}
+
+public enum BulletType
+{
+    Normal, Sniper, Area, Hit //eccetera: normale, raggio più ampio, danno ad area, danno + spostamento per il target
+}
+
+public struct Move
+{
+    public MoveType type;
+    public GameObject targetTile;
+    public BulletType bullet;
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private int movementRange;
+    [SerializeField]
+    private int shootRange;
     private List<GameObject> moves;
+    private GameObject oldTile;
     private GameObject currentTile;
+    public GameObject selectedTile;
     private bool movesAreVisible;
 
     private Color Hint => Color.cyan;
@@ -27,14 +48,27 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (movesAreVisible)
-            HoverMove();
+        {
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+                SelectMove();
+            else
+                HoverMove();
+        }
     }
 
-    private void ColorTile(GameObject t, Color c)
+    #region TileUtility
+    private void SetTileColor(GameObject g, Color c)
     {
-        t.GetComponent<Tile>().oldColor = t.GetComponent<Tile>().rend.material.color;
-        t.GetComponent<Tile>().rend.material.color = c;
+        Tile t = g.GetComponent<Tile>();
+        t.oldColor = t.rend.material.color;
+        t.rend.material.color = c;
     }
+
+    private Color GetTileColor(GameObject g)
+    {
+        return g.GetComponent<Tile>().rend.material.color;
+    }
+    #endregion
 
     #region Move
     private bool CalculateMoves()
@@ -49,15 +83,48 @@ public class PlayerMovement : MonoBehaviour
         //Fills the array with the data
         moves = new List<GameObject>();
         for (int i = 0; i < tiles.Length; i++)
+        {
+            if (tiles[i].transform.position.x == transform.position.x && tiles[i].transform.position.z == transform.position.z)
+                continue;
+
             moves.Add(tiles[i].gameObject);
+        }
+
+        SortMoves();
 
         return true;
+    }
+
+    private void SortMoves()
+    {
+        for (int i = 0; i < moves.Count - 1; i++)
+        {
+            for (int j = i + 1; j < moves.Count; j++)
+            {
+                //The precedence is for higher Z
+                if(moves[j].transform.position.z > moves[i].transform.position.z)
+                {
+                    GameObject temp = moves[i];
+                    moves[i] = moves[j];
+                    moves[j] = temp;
+                }
+                else if(moves[j].transform.position.z == moves[i].transform.position.z)
+                {
+                    //If Z is equal, the precedence is for lower X
+                    if(moves[j].transform.position.x < moves[i].transform.position.x)
+                    {
+                        GameObject temp = moves[i];
+                        moves[i] = moves[j];
+                        moves[j] = temp;
+                    }
+                }
+            }
+        }
     }
 
     public void ToggleAvailableMoves()
     {
         //Toggles the state of the bool var
-        Color c = movesAreVisible ? Off : Hint;
         movesAreVisible = !movesAreVisible;
 
         if (!CalculateMoves())
@@ -65,78 +132,61 @@ public class PlayerMovement : MonoBehaviour
 
         //Colors tiles
         for (int i = 0; i < moves.Count; i++)
-            ColorTile(moves[i], c);
+        {
+            Color c = movesAreVisible ? moves[i].GetComponent<Tile>().oldColor : Off;
+            SetTileColor(moves[i], c);
+        }
     }
 
     private void HoverMove()
     {
-        if (currentTile != null)
-            ColorTile(currentTile, currentTile.GetComponent<Tile>().oldColor);
-
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1 << 8))
+        //The previous current tile becomes the old one
+        oldTile = currentTile;
+        if (oldTile != null)
         {
-            if (moves.Contains(hit.collider.gameObject))
-            {
-                currentTile = hit.collider.gameObject;
+            //If the old tile wasn't green, color it in cyan
+            if (GetTileColor(oldTile) != Select)
+                SetTileColor(oldTile, Hint);
+        }
 
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                    ColorTile(hit.collider.gameObject, Select);
-                else
-                    ColorTile(hit.collider.gameObject, Hover);
-            }
+        //This is the case where the target is a valid move
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1 << 8) && moves.Contains(hit.collider.gameObject))
+        {
+            currentTile = hit.collider.gameObject;
+            if(GetTileColor(currentTile) != Select)
+                SetTileColor(currentTile, Hover);
+        }
+        else    //In this case it could be nothing, a generic object or a generic tile
+        {
+            currentTile = null;
         }
     }
 
     private void SelectMove()
     {
-        if(currentTile != null)
-            ColorTile(currentTile, Off);
-
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1 << 8))
+        //The previous current tile becomes the old one
+        oldTile = currentTile;
+        if (oldTile != null)
         {
-            //if (moves.Contains(hit.collider.gameObject))
-            //{
-            //    currentTile = moves[moves.IndexOf(hit.collider.gameObject)];
-
-            //    if (Input.GetKeyDown(KeyCode.Mouse0))
-            //        ColorTile(moves[moves.IndexOf(hit.collider.gameObject)], Select);
-            //    else
-            //        ColorTile(moves[moves.IndexOf(hit.collider.gameObject)], Hover);
-            //}
-            currentTile = hit.collider.gameObject;
-            ColorTile(hit.collider.gameObject, Hover);
+            SetTileColor(oldTile, Hint);
         }
-        //else
-        //{
-        //    ColorTile(currentTile, Hint);
-        //}
 
-        //if(Input.GetKeyDown(KeyCode.Mouse0))
-        //{
+        //Unmark the old selected green tile
+        if (selectedTile != null)
+            SetTileColor(selectedTile, Hint);
 
-        //}
-
-        ////Resets all tiles' (moves) color to cyan
-        //for (int i = 0; i < moves.Count; i++)
-        //    ColorTile(moves[i], Hint);
-
-        ////If it hits something and that is one of the available moves, it colors it
-        //if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, (1 << 8) | (1 << 5)))
-        //{
-        //    //If it's a UI element, keep the old move
-        //    if(hit.collider.gameObject.layer == 1 << 5)
-        //    {
-        //        ColorTile(oldMove, Select);
-        //        Debug.Log("Toccata UI");
-        //    }
-
-        //    //If the selected tile (or something else) is an available move, color it
-        //    if (moves.Contains(hit.collider.gameObject))
-        //    {
-        //        ColorTile(hit.collider.gameObject, Select);
-        //        oldMove = hit.collider.gameObject;
-        //    }
-        //}
+        //This is the case where the target is a valid move
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1 << 8) && moves.Contains(hit.collider.gameObject))
+        {
+            currentTile = hit.collider.gameObject;
+            SetTileColor(currentTile, Select);
+            selectedTile = currentTile;
+        }
+        else    //In this case it could be nothing, a generic object or a generic tile
+        {
+            currentTile = null;
+            selectedTile = null;
+        }
     }
     #endregion
 

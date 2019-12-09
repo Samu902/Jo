@@ -23,6 +23,6 @@ public class Player : MonoBehaviour
         ui = GetComponent<PlayerUI>();
 
         //Register player in game manager's list
-        GameManager.instance.players.Add(this);
+        //GameManager.instance.players.Add(this);
     }
 }
