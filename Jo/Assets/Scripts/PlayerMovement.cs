@@ -7,16 +7,11 @@ public enum MoveType
     Move, Shoot, Rest
 }
 
-public enum BulletType
-{
-    Normal, Sniper, Area, Hit //eccetera: normale, raggio più ampio, danno ad area, danno + spostamento per il target
-}
-
 public struct Move
 {
     public MoveType type;
     public GameObject targetTile;
-    public BulletType bullet;
+    public Bullet bullet;
 }
 
 public class PlayerMovement : MonoBehaviour
