@@ -5,15 +5,14 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [HideInInspector]
-    public Vector3 pos;
-    [HideInInspector]
     public Renderer rend;
     [HideInInspector]
     public Color oldColor;
 
+    public Vector3 Position { get => transform.position; set => transform.position = value; }
+
     private void Awake()
     {
-        pos = transform.position;
         oldColor = Color.cyan;
         rend = GetComponentInChildren<Renderer>();
     }

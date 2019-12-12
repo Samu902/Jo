@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField]
     private Button moveButton, shootButton, restButton, confirmButton;
+    public Toggle[] bulletToggles;
 
     private Player player;
 
@@ -17,6 +18,9 @@ public class PlayerUI : MonoBehaviour
         shootButton.onClick.AddListener(OnShoot);
         restButton.onClick.AddListener(OnRest);
         confirmButton.onClick.AddListener(OnConfirm);
+
+        foreach (Toggle t in bulletToggles)
+            t.onValueChanged.AddListener(OnBulletChanged);
     }
 
     private void OnDisable()
@@ -25,6 +29,9 @@ public class PlayerUI : MonoBehaviour
         shootButton.onClick.RemoveListener(OnShoot);
         restButton.onClick.RemoveListener(OnRest);
         confirmButton.onClick.RemoveListener(OnConfirm);
+
+        foreach (Toggle t in bulletToggles)
+            t.onValueChanged.RemoveListener(OnBulletChanged);
     }
 
     private void Start()
@@ -34,6 +41,9 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
+        if (player.isReady)
+            return;
+
         if (Input.GetKeyDown(KeyCode.M))
             OnMove();
 
@@ -49,25 +59,35 @@ public class PlayerUI : MonoBehaviour
 
     public void OnMove()
     {
-        player.movement.ToggleAvailableMoves();
+        player.movement.ToggleAvailableMoves(MoveType.Move);
     }
 
     private void OnShoot()
     {
-        Debug.Log("Hai attivato la modalità sparo");
+        player.movement.ToggleAvailableMoves(MoveType.Shoot);
+    }
+
+    public void OnBulletChanged(bool isOn)
+    {
+        //This avoids calling the method on the deactivated toggle too, this way it is only called in the activated one
+        if (!isOn)
+            return;
+
+        //if (!player.movement.movesAreVisible)
+        //    return;
+
+        //Update available moves (even visually)
+        player.movement.ToggleAvailableMoves(MoveType.BulletChange);
+        //player.movement.ToggleAvailableMoves(MoveType.Shoot);
     }
 
     private void OnRest()
     {
-        Debug.Log("Hai attivato la modalità riposo");
+        player.movement.Rest();
     }
 
     private void OnConfirm()
     {
-        Debug.Log("Hai appena confermato");
-
-        //Ricordarsi che quando si clicca qui non si vede più la tile selezionata, diventa null subito dopo
-        //Fare in modo di far quanto meno continuare a vederla
-        Debug.Log(player.movement.selectedTile);
+        player.movement.SendMove();
     }
 }

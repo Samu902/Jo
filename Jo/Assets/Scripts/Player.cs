@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public string playerName;
     public int id;
+    public Move move;
+    public bool isReady;
 
     [HideInInspector]
     public PlayerMovement movement;

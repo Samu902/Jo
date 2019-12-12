@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum MoveType
 {
-    Move, Shoot, Rest
+    None, Move, Shoot, BulletChange, Rest
 }
 
-public struct Move
+public class Move
 {
     public MoveType type;
     public GameObject targetTile;
@@ -20,11 +20,29 @@ public class PlayerMovement : MonoBehaviour
     private int movementRange;
     [SerializeField]
     private int shootRange;
+
+    private MoveType oldMoveType;
+    private MoveType currentMoveType;
     private List<GameObject> moves;
     private GameObject oldTile;
     private GameObject currentTile;
     public GameObject selectedTile;
-    private bool movesAreVisible;
+    public GameObject SelectedBullet
+    {
+        get
+        {
+            foreach (UnityEngine.UI.Toggle t in player.ui.bulletToggles)
+            {
+                if(t.isOn)
+                    return t.gameObject;
+            }
+            return null;
+        }
+    }
+
+    [HideInInspector]
+    public bool movesAreVisible;
+    public Move selectedMove;
 
     private Color Hint => Color.cyan;
     private Color Hover => Color.yellow;
@@ -38,11 +56,14 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Player>();
 
         movesAreVisible = false;
+
+        foreach (UnityEngine.UI.Toggle t in player.ui.bulletToggles)
+            t.interactable = false;
     }
 
     void Update()
     {
-        if (movesAreVisible)
+        if (moves != null && movesAreVisible && !player.isReady)
         {
             if (Input.GetKeyUp(KeyCode.Mouse0))
                 SelectMove();
@@ -65,72 +86,131 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    #region Move
-    private bool CalculateMoves()
+    private void CalculateMoves(MoveType moveType)
     {
-        //Gets adiacent tiles using movementRange
-        Collider[] tiles = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
+        Collider[] tiles;
+        if(moveType == MoveType.Move)
+        {
+            //Gets adiacent tiles using movementRange
+            tiles = Physics.OverlapBox(transform.position, 2 * movementRange * Vector3.one * 1.01f);
+        }
+        else
+        {
+            //Gets adiacent tiles using shootRange and additionalRange
+            tiles = Physics.OverlapBox(transform.position, 2 * Mathf.Clamp(shootRange + SelectedBullet.GetComponent<Bullet>().additionalRange, 0, Mathf.Infinity) * Vector3.one * 1.01f);
+        }
 
-        //Returns false if there aren't any moves
         if (tiles == null)
-            return false;
+            return;
 
         //Fills the array with the data
         moves = new List<GameObject>();
         for (int i = 0; i < tiles.Length; i++)
         {
+            //The tile under the player is not a valid move
             if (tiles[i].transform.position.x == transform.position.x && tiles[i].transform.position.z == transform.position.z)
                 continue;
 
             moves.Add(tiles[i].gameObject);
         }
-
-        SortMoves();
-
-        return true;
     }
 
-    private void SortMoves()
+    public void ToggleAvailableMoves(MoveType newMoveType)
     {
-        for (int i = 0; i < moves.Count - 1; i++)
+        //Ogni bottone -- Move - Shoot - Proiettili vari
+        //devono mostrare le possibili mosse
+        //Se le mosse sono già visibili, le deve nascondere
+        //Se le mosse sono di un tipo diverso da quello precedente, le deve aggiornare
+
+        //Ricordarsi di disattivare i bottoni proiettili quando non siamo in modalità shoot
+
+        bool none = true;
+
+        //Update old and current moveType
+        oldMoveType = currentMoveType;
+        currentMoveType = newMoveType;
+
+        //Disable bulletToggles if not in shoot or bulletChange mode
+        if (!(currentMoveType == MoveType.Shoot || currentMoveType == MoveType.BulletChange))
         {
-            for (int j = i + 1; j < moves.Count; j++)
-            {
-                //The precedence is for higher Z
-                if(moves[j].transform.position.z > moves[i].transform.position.z)
-                {
-                    GameObject temp = moves[i];
-                    moves[i] = moves[j];
-                    moves[j] = temp;
-                }
-                else if(moves[j].transform.position.z == moves[i].transform.position.z)
-                {
-                    //If Z is equal, the precedence is for lower X
-                    if(moves[j].transform.position.x < moves[i].transform.position.x)
-                    {
-                        GameObject temp = moves[i];
-                        moves[i] = moves[j];
-                        moves[j] = temp;
-                    }
-                }
-            }
+            foreach (UnityEngine.UI.Toggle t in player.ui.bulletToggles)
+                t.interactable = false;
         }
-    }
-
-    public void ToggleAvailableMoves()
-    {
-        //Toggles the state of the bool var
-        movesAreVisible = !movesAreVisible;
-
-        if (!CalculateMoves())
-            return;
-
-        //Colors tiles
-        for (int i = 0; i < moves.Count; i++)
+        else
         {
-            Color c = movesAreVisible ? moves[i].GetComponent<Tile>().oldColor : Off;
-            SetTileColor(moves[i], c);
+            foreach (UnityEngine.UI.Toggle t in player.ui.bulletToggles)
+                t.interactable = true;
         }
+
+        //If last moveType was different or last time it was all off or we want to change bullet (with visible moves), now it's time to turn on, otherwise we turn off
+        movesAreVisible = oldMoveType == MoveType.None || oldMoveType != currentMoveType || (currentMoveType == MoveType.BulletChange && movesAreVisible) ? true : false;
+
+        if (moves != null)
+        {
+            //If they have to be turned off, that's it. If they need to be turned on, they also have to be cleaned
+            for (int i = 0; i < moves.Count; i++)
+                SetTileColor(moves[i], Off);
+        }
+
+        //If the moves will be turned on
+        if (movesAreVisible)
+        {
+            //First recalculate them
+            CalculateMoves(currentMoveType);
+
+            //Color tiles
+            for (int i = 0; i < moves.Count; i++)
+                SetTileColor(moves[i], Hint);
+
+            //If moveType has changed or move isn't in the range anymore
+            if (oldMoveType != currentMoveType || !moves.Contains(selectedTile))
+                selectedTile = null;
+            else    //Continue to show it in green
+                SetTileColor(selectedTile, Select);
+
+            none = false;
+        }
+
+        //If the tiles don't get turned on or updated, this turn is none
+        if (none)
+        {
+            currentMoveType = MoveType.None;
+            foreach (UnityEngine.UI.Toggle t in player.ui.bulletToggles)
+                t.interactable = false;
+        }
+
+        //v----------VECCHIO METODO-------v
+
+        //oldMoveType = currentMoveType;
+        //currentMoveType = newMoveType;
+
+        ////Toggles the state of the bool var
+        ////If you switch to another moveType, it will be turned on, no matter the state on/off
+        //movesAreVisible = oldMoveType == MoveType.None ? true : !movesAreVisible;
+
+        ////Since they have to be resetted in both cases, I put it here: if they have to be turned on, they'll do so later in this method
+        //if(moves != null)
+        //{
+        //    for (int i = 0; i < moves.Count; i++)
+        //        SetTileColor(moves[i], Off);
+        //}
+
+        //if (movesAreVisible)
+        //{
+        //    CalculateMoves(newMoveType);
+
+        //    for (int i = 0; i < moves.Count; i++)
+        //    {
+        //        //If you switch to another moveType, the selected tile will be gone
+        //        if (currentMoveType == MoveType.None)
+        //            SetTileColor(moves[i], moves[i].GetComponent<Tile>().oldColor);
+        //        else
+        //        {
+        //            SetTileColor(moves[i], Hint);
+        //            selectedTile = null;
+        //        }
+        //    }
+        //}
     }
 
     private void HoverMove()
@@ -183,9 +263,61 @@ public class PlayerMovement : MonoBehaviour
             selectedTile = null;
         }
     }
-    #endregion
 
-    #region Shoot
+    public void Rest()
+    {
+        oldMoveType = currentMoveType;
+        currentMoveType = MoveType.Rest;
 
-    #endregion
+        if (moves == null)
+            return;
+
+        for (int i = 0; i < moves.Count; i++)
+            SetTileColor(moves[i], Off);
+
+        moves = null;
+    }
+
+    public void SendMove()
+    {
+        //Turn off the moves, since the player won't be able to mess around anymore
+        if (moves != null)
+        {
+            for (int i = 0; i < moves.Count; i++)
+                SetTileColor(moves[i], Off);
+        }
+
+        //Build the packet
+        //If the player was in the move/shoot menu but it didn't choose any target, it will simply rest
+        if (selectedTile == null)
+            currentMoveType = MoveType.Rest;
+
+        if (selectedMove == null)
+            selectedMove = new Move();
+
+        switch (currentMoveType)
+        {
+            case MoveType.None:
+            case MoveType.Rest:
+                selectedMove.type = MoveType.Rest;
+                selectedMove.targetTile = null;
+                selectedMove.bullet = null;
+                break;
+            case MoveType.Move:
+                selectedMove.type = MoveType.Move;
+                selectedMove.targetTile = selectedTile;
+                selectedMove.bullet = null;
+                break;
+            case MoveType.Shoot:
+            case MoveType.BulletChange:
+                selectedMove.type = MoveType.Shoot;
+                selectedMove.targetTile = selectedTile;
+                selectedMove.bullet = SelectedBullet.GetComponent<Bullet>();
+                break;
+        }
+
+        //Save it in player general script: the one who is in players game manager array
+        player.move = selectedMove;
+        player.isReady = true;
+    }
 }
